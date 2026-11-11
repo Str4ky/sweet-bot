@@ -29,6 +29,7 @@ module.exports = {
       "Voice Channel Position",
       "Voice Channel User Limit",
       "Voice Channel Bitrate",
+      "Voice Channel Member Count",
     ];
     return `${presets.getVoiceChannelText(data.channel, data.varName)} - ${info[parseInt(data.info, 10)]}`;
   },
@@ -57,6 +58,9 @@ module.exports = {
       case 3:
       case 4:
       case 5:
+        dataType = "Number";
+        break;
+      case 6:
         dataType = "Number";
         break;
     }
@@ -111,6 +115,7 @@ module.exports = {
 		<option value="3">Voice Channel Position</option>
 		<option value="4">Voice Channel User Limit</option>
 		<option value="5">Voice Channel Bitrate</option>
+    <option value="6">Voice Channel Member Count</option>
 	</select>
 </div>
 
@@ -167,6 +172,9 @@ module.exports = {
         break;
       case 5:
         result = targetChannel.bitrate;
+        break;
+      case 6:
+        result = targetChannel.members?.size;
         break;
       default:
         break;
